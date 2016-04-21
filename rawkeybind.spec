@@ -32,6 +32,7 @@ WARNING: the binary is SUID root!
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -40,6 +41,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/rawkeybind.conf
-%attr(755,root,root) %{_bindir}/rawkeybind
-%{_mandir}/man1/rawkeybind.1*
+%attr(4755,root,root) %{_bindir}/%{name}
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.conf
+%{_mandir}/man1/*.1*
